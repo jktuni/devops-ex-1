@@ -1,0 +1,50 @@
+services:
+  service1:
+    build:
+      context: ./service1-node
+      dockerfile: Dockerfile
+    container_name: service1
+    ports:
+      - "8199:8199"
+    environment:   
+      SERVICE2_BASE_URL: "http://service2:8081"
+      STORAGE_BASE_URL: "http://storage:8080"
+      VSTORAGE_PATH: "/app/vstorage/log.txt"
+    volumes:
+      - ./vstorage:/app/vstorage
+    depends_on:
+      - service2
+      - storage
+    restart: unless-stopped
+
+  service2:
+    build:
+      context: ./service2-dotnet
+      dockerfile: Dockerfile
+    container_name: service2
+    environment:
+      ASPNETCORE_URLS: "http://0.0.0.0:8081"
+      VSTORAGE_PATH: "/app/vstorage/log.txt"
+      STORAGE_BASE_URL: "http://storage:8080"
+    volumes:
+      - ./vstorage:/app/vstorage
+    expose:
+      - "8081"
+    restart: unless-stopped
+
+  storage:
+    build:
+      context: ./storage-dotnet
+      dockerfile: Dockerfile
+    container_name: storage
+    environment:
+      ASPNETCORE_URLS: "http://0.0.0.0:8080"
+      STORAGE_FILE_PATH: "/app/data/storage.log"
+    volumes:
+      - storage_data:/app/data
+    expose:
+      - "8080"
+    restart: unless-stopped
+
+volumes:
+  storage_data:
