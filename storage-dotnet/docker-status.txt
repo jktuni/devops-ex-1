@@ -1,0 +1,13 @@
+docker container ls
+CONTAINER ID   IMAGE                  COMMAND                  CREATED          STATUS          PORTS                    NAMES
+f4044b863e8c   devops-ex-1-service1   "docker-entrypoint.s…"   12 minutes ago   Up 12 minutes   0.0.0.0:8199->8199/tcp   service1
+a78395327482   devops-ex-1-service2   "dotnet Service2.dll"    12 minutes ago   Up 12 minutes   8081/tcp                 service2
+fe4a3282b0a1   devops-ex-1-storage    "dotnet Storage.dll"     12 minutes ago   Up 12 minutes   8080/tcp                 storage
+
+docker network ls
+NETWORK ID     NAME                  DRIVER    SCOPE
+fddde9c398eb   bridge                bridge    local
+4302a05a62e3   devops-ex-1_default   bridge    local
+d4167d72eb56   ex01a_default         bridge    local
+5ed5f9f44aa9   host                  host      local
+9f6a67af943d   none                  null      local
