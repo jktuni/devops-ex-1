@@ -1,0 +1,17 @@
+Used tool
+OpenAI ChatGPT (GPT-5)
+
+Motivation / reason to use
+Used for sparring purposes. I wanted to speed up the initial scaffolding and double-check my understanding of the exercise requirements.
+
+How and why it helped
+Helped me outline the repository structure, create initial Dockerfiles, a docker-compose.yaml skeleton, and minimal example code for Node.js and .NET. It also pointed out details from the assignment text and gave some hints for testing on Windows and Linux.
+
+Mistakes observed
+Suggested using npm ci even though I had no package-lock.json, which caused a build error.
+Some command examples used old syntax 
+
+Things it was not able to provide
+Validation of the implementation. 
+Could not guarantee exact behavior in the Linux grading environment.
+
