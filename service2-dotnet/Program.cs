@@ -29,9 +29,9 @@ long GetRootFreeMb()
 string Record2()
 {
     var ts = DateTimeOffset.UtcNow.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'");
-    var uptimeHours = (long)(DateTimeOffset.UtcNow - startTime).TotalHours;
+    var uptimeHours = (DateTimeOffset.UtcNow - startTime).TotalHours;
     var freeMb = GetRootFreeMb();
-    return $"Timestamp2 {ts}: uptime {uptimeHours} hours, free disk in root: {freeMb} MBytes";
+    return $"Timestamp2 {ts}: uptime {uptimeHours:F2} hours, free disk in root: {freeMb} MBytes";
 }
 
 async Task AppendVStorage(string line)

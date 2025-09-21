@@ -23,7 +23,8 @@ async function getFreeDiskMB() {
 
 function getUptimeHours() {
   const ms = Date.now() - START_TIME;
-  return Math.floor(ms / (1000 * 60 * 60));
+  const hours = ms / (1000 * 60 * 60);
+  return hours.toFixed(2); 
 }
 
 async function appendVStorage(line) {
